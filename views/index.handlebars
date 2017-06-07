@@ -1,0 +1,43 @@
+<h3>Step 1: Choose Your Space</h3>
+{{#if rooms}}
+  {{#unless room}}
+  <p>Please choose the Space where you would like notifications sent:</p>
+  {{else}}
+  <p>We are sending notifications to your <strong>{{room.title}}</strong> Space. Change the Space where you would like notifications sent:</p>
+  {{/unless}}
+  <div class="list-group">
+    <a href="#" class="list-group-item active disabled">
+      {{room.title}}
+    </a>
+    {{#each rooms}}
+    <a href="/rooms/{{this.id}}" class="list-group-item list-group-item-action">{{this.title}}</a>
+    {{/each}}
+  </div>
+{{else}}
+  No Spaces.
+{{/if}}
+
+<br/>
+<hr/>
+<br/>
+
+<h3>Step 2: Setup Your PayPal Integration</h3>
+<p>To receive payment notifications in Cisco Spark you will need to setup your
+  unique URL in your PayPal account. It's easy - follow these steps:</p>
+<ol>
+  <li>Log into your PayPal account.</li>
+  <li>Go to Profile then "My Selling Tools".</li>
+  <li>Look for an option labelled "Instant Payment Notification". Click on the update button for that option.</li>
+  <li>Click "Choose IPN Settings".</li>
+  <li>Enter your unique URL (below) and hit "Save".</li>
+</ol>
+<p>Here is your unique PayPal IPN URL:</p>
+<input type="text" value="https://{{domain}}/paypal/ipn/{{user._id}}" class="form-control" disabled />
+
+<br/>
+<hr/>
+<br/>
+
+<h3>Step 3: Help</h3>
+<p>Need help getting started? We are here to answer any questions you might
+  have. Please email ciscospark@worldrenowned.co.

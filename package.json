@@ -1,0 +1,46 @@
+{
+  "name": "cisco-spark-paypal-integration",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www"
+  },
+  "dependencies": {
+    "async": "1.5.2",
+    "body-parser": "~1.12.0",
+    "ciscospark": "^1.0.4",
+    "connect-mongo": "0.8.1",
+    "cookie-parser": "~1.3.4",
+    "debug": "~2.1.1",
+    "express": "~4.12.2",
+    "express-handlebars": "3.0.0",
+    "express-session": "1.11.1",
+    "lodash": "^4.13.1",
+    "mailgun-js": "0.5",
+    "mongodb": "2.1.4",
+    "mongoose": "4.3.6",
+    "mongoose-deep-populate": "^3.0.0",
+    "morgan": "~1.5.1",
+    "request": "2.55.0",
+    "serve-favicon": "~2.2.0",
+    "sitemap": "1.8.0",
+    "ciscospark": "^1.0.4",
+    "passport": ">= 0.0.0",
+    "passport-cisco-spark": ">= 0.0.0"
+  },
+  "engines": {
+    "node": "6.2.x"
+  },
+  "devDependencies": {
+    "decache": "^3.1.0",
+    "eslint": "^2.13.1",
+    "eslint-config-airbnb": "^9.0.1",
+    "eslint-plugin-import": "^1.8.0",
+    "eslint-plugin-jsx-a11y": "^1.2.2",
+    "eslint-plugin-react": "^5.1.1",
+    "mocha": "^2.5.3",
+    "proxyquire": "^1.7.9",
+    "sinon": "^1.17.4",
+    "supertest": "^1.2.0"
+  }
+}
