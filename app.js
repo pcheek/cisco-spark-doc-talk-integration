@@ -23,6 +23,15 @@ app.engine('handlebars', exphbs({
   defaultLayout: 'main',
   helpers: {
     domain: process.env.DOMAIN,
+    internal_cisco_spark_integration_id: function() {
+      return process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID;
+    },
+    internal_cisco_spark_integration_title: function() {
+      return process.env.INTERNAL_CISCO_SPARK_INTEGRATION_TITLE;
+    },
+    internal_cisco_spark_integration_description: function() {
+      return process.env.INTERNAL_CISCO_SPARK_INTEGRATION_DESCRIPTION;
+    },
     // http://stackoverflow.com/questions/8853396/logical-operator-in-a-handlebars-js-if-conditional
     ifCond: function (v1, operator, v2, options) {
       // This function provides conditional functionality in Handlebars templates.

@@ -4,15 +4,19 @@
  *  the actual production environment.
  */
 
-if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID)
-  process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID = 'paypal';
+ if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID)
+   process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID = 'webhook';
+ if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_TITLE)
+   process.env.INTERNAL_CISCO_SPARK_INTEGRATION_TITLE = 'PayPal';
+ if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_DESCRIPTION)
+   process.env.INTERNAL_CISCO_SPARK_INTEGRATION_DESCRIPTION = 'The Cisco Spark PayPal Integration provides instant payment notifications for PayPal payments within Cisco Spark.';
 if(!process.env.TZ)
   process.env.TZ = 'UTC';
 if(!process.env.MONGOLAB_URI)
   process.env.MONGOLAB_URI = process.env.MONGODB_MONGOLAB_URI || 'mongodb://localhost:27017/cisco-spark-paypal-integration';
 if(!process.env.NODE_ENV)
   process.env.NODE_ENV = 'development';
-if(process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID == 'paypal') {
+if(true == true || process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID == 'paypal') {
   if(!process.env.DOMAIN)
     process.env.DOMAIN = 'cisco-spark-paypal-integration.ngrok.io';
   if(!process.env.CISCOSPARK_CLIENT_ID)

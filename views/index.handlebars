@@ -23,6 +23,7 @@
 <hr/>
 <br/>
 
+{{#if integration_is_paypal}}
 <h3>Step 2: Setup Your PayPal Integration</h3>
 <p>To receive payment notifications in Cisco Spark you will need to setup your
   unique URL in your PayPal account. It's easy - follow these steps:</p>
@@ -35,6 +36,19 @@
 </ol>
 <p>Here is your unique PayPal IPN URL:</p>
 <input type="text" value="https://{{domain}}/paypal/ipn/{{user._id}}" class="form-control" disabled />
+{{/if}}
+
+{{#if integration_is_webhook}}
+<h3>Step 2: Setup Your Webhook Integration</h3>
+<p>To receive API alert notifications in Cisco Spark you will need to setup your
+  send requests to your unique URL. It's easy - send your request like this:</p>
+<pre style="padding: 15px; background: #333; color: #fff;"><code>curl -X POST \
+     -H 'Content-Type: application/json' \
+     -d '{"text":"Hello world!"}' \
+     https://{{domain}}/webhook/ipn/{{user._id}}</pre></code>
+<p>Here is your unique PayPal IPN URL:</p>
+<input type="text" value="https://{{domain}}/webhook/ipn/{{user._id}}" class="form-control" disabled />
+{{/if}}
 
 <br/>
 <hr/>

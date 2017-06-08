@@ -7,7 +7,7 @@ const express = require('express');
 const router = express.Router();
 const request = require('request');
 
-const db = require('../../modules/db');
+const db = require('../../../modules/db');
 
 module.exports = router.post('/:id', function(req, res) {
   db.User.findOne({

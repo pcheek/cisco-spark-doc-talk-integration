@@ -29,7 +29,9 @@ module.exports = router.get('/', function(req, res) {
         user: req.user,
         room: room,
         rooms: rooms,
-        message: message
+        message: message,
+        integration_is_paypal: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID === 'paypal',
+        integration_is_webhook: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID === 'webhook'
       });
     });
   });
