@@ -12,9 +12,12 @@ module.exports = router.get('/:id', function(req, res) {
   if(!req.user) return res.redirect('/login');
   console.log(req.params.id);
   db.User.findOneAndUpdate({
-    _id: req.user._id
+    _id: req.user._id,
+    "cisco_spark_integrations.cisco_spark_internal_integration_id": process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID
   }, {
-    cisco_spark_room_id: req.params.id
+    $set: {
+      cisco_spark_room_id: req.params.id
+    }
   }, {
     new: true
   }).exec(function(err, user) {

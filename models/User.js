@@ -1,10 +1,23 @@
 const mongoose = require('mongoose');
 
+const userIntegrationSchema = new mongoose.Schema({
+	cisco_spark_internal_integration_id: { type: String, required: true, default: null },
+	cisco_spark_room_id: { type: String, required: false, default: null },
+	cisco_spark_public_key: { type: String, required: false, default: null },
+	cisco_spark_private_key: { type: String, required: false, default: null }
+}, {
+  // Historical timestamps for the integration.
+  timestamps: {
+    createdAt: 'created',
+    updatedAt: 'updated'
+  }
+});
+
 const userSchema = new mongoose.Schema({
 	cisco_spark_id: { type: String, required: true },
 	cisco_spark_access_token: { type: String, required: false, default: null },
 	cisco_spark_refresh_token: { type: String, required: false, default: null },
-  cisco_spark_room_id: { type: String, required: false, defulat: null },
+  cisco_spark_integrations: [userIntegrationSchema],
 	avatar: { type: String, required: false, default: null },
 	emails: [{ type: String, required: false, default: null }],
 	display_name: { type: String, required: false, default: null },
@@ -25,7 +38,13 @@ const userSchema = new mongoose.Schema({
 userSchema.methods.getRooms = function getRooms (callback) {
   process.env.CISCOSPARK_ACCESS_TOKEN = this.cisco_spark_access_token;
 	const ciscospark = require('ciscospark/env');
-  var defaultRoomId = this.cisco_spark_room_id;
+	var thisIntegration = null;
+	var integrations = this.cisco_spark_integrations.filter(function(integration) {
+		if(cisco_spark_integration.cisco_spark_internal_integration_id == process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID) {
+			thisIntegration = integration;
+		}
+	})[0];
+  var defaultRoomId = thisIntegration.cisco_spark_room_id;
 	ciscospark.rooms.list({
 		max: 100
 	})
@@ -50,3 +69,4 @@ userSchema.methods.getRooms = function getRooms (callback) {
 };
 
 exports.User = mongoose.model('User', userSchema);
+//exports.UserIntegration = mongoose.model('UserIntegration', userIntegrationSchema);
