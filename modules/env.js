@@ -5,7 +5,7 @@
  */
 
  if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID)
-   process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID = 'paypal';
+   process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID = 'webhook';
 if(!process.env.TZ)
   process.env.TZ = 'UTC';
 if(!process.env.MONGOLAB_URI)

@@ -1,5 +1,5 @@
 const passport = require('passport');
-const CiscoSparkStrategy = require('passport-cisco-spark').Strategy;
+const CiscoSparkStrategy = require('../node_modules_modified/passport-cisco-spark/lib/index').Strategy;
 
 const env = require('./env');
 const db = require('./db');
