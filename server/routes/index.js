@@ -14,14 +14,8 @@ const authSparkCallbackRoute = router.use('/auth/spark/callback', require('./aut
 
 const roomsRoute = router.use('/rooms', require('./roomsRoute'));
 
-var integrationRoute = null;
-if(process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID == 'paypal') {
-  integrationRoute = router.use('/paypal/ipn', require('./integrations/paypalIpnWebhookRoute'));
-}
-
-if(process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID == 'webhook') {
-  integrationRoute = router.use('/webhook/ipn', require('./integrations/webhookWebhookRoute'));
-}
+const paypalIpnWebhookRoute = router.use('/paypal/ipn', require('./integrations/paypalIpnWebhookRoute'));
+const webhookWebhookRoute = router.use('/webhook/ipn', require('./integrations/webhookWebhookRoute'));
 
 module.exports = {
   indexRoute,
@@ -30,5 +24,6 @@ module.exports = {
   authSparkRoute,
   authSparkCallbackRoute,
   roomsRoute,
-  integrationRoute
+  paypalIpnWebhookRoute,
+  webhookWebhookRoute
 };

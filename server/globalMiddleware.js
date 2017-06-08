@@ -23,25 +23,12 @@ const sessionMiddleware = session({
 const passportMiddleware = passport.passport.initialize();
 const passportSessionMiddleware = passport.passport.session();
 
-// JSON Raw Body Parser
-const bodyParserJson = function(req, res, next) {
-  var data = '';
-  req.on('data', function(chunk) {
-    data += chunk;
-  });
-  req.on('end', function() {
-    req.rawBody = data;
-  });
-  next();
-}
-
 // Initialize Middleware
 module.exports.globalMiddlewares = [
     cookieMiddleware,
     sessionMiddleware,
     passportMiddleware,
     passportSessionMiddleware,
-    bodyParserJson,
     bodyParser.json(),
     bodyParser.urlencoded({ extended: false }),
 ];

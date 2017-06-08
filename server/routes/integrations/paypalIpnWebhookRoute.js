@@ -6,6 +6,7 @@
 const express = require('express');
 const router = express.Router();
 const request = require('request');
+const qs = require('qs');
 
 const db = require('../../../modules/db');
 
@@ -34,7 +35,8 @@ module.exports = router.post('/:id', function(req, res) {
         return res.end();
       } else {
 
-        var body = 'cmd=_notify-validate&' + req.rawBody;
+        var rawBody = qs.stringify(req.body, { encode: false });
+        var body = 'cmd=_notify-validate&' + rawBody;
 
         var options = {
           url: process.env.PAYPAL_IPN_VERIFICATION_URL,
