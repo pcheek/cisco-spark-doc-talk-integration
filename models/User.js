@@ -44,7 +44,10 @@ userSchema.methods.getRooms = function getRooms (callback) {
 			thisIntegration = integration;
 		}
 	})[0];
-  var defaultRoomId = thisIntegration.cisco_spark_room_id;
+  var defaultRoomId = null;
+	if(thisIntegration && thisIntegration != null) {
+		defaultRoomId = thisIntegration.cisco_spark_room_id;
+	}
 	ciscospark.rooms.list({
 		max: 100
 	})
