@@ -36,12 +36,24 @@ passport.use(new CiscoSparkStrategy({
       }).exec(function(err, user) {
       	if(err) return done(err, profile._json);
       	if(user) {
-      		db.User.findOneAndUpdate({
-						cisco_spark_id: profile.id
-					}, {
+          var userUpdateQuery = {
 						cisco_spark_access_token: accessToken,
 						cisco_spark_refresh_token: refreshToken
-					}).exec(function(err, user) {
+					};
+          var integration = null;
+          integration = user.cisco_spark_integrations.filter(function (integration) {
+            return integration.cisco_spark_internal_integration_id === process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID;
+          }).pop();
+          if(!integration || integration == null) {
+            userUpdateQuery['$push'] = {
+              "cisco_spark_integrations": {
+                cisco_spark_internal_integration_id: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID
+              }
+            }
+          }
+      		db.User.findOneAndUpdate({
+						cisco_spark_id: profile.id
+					}, userUpdateQuery).exec(function(err, user) {
 						if(err) return done(err, profile._json);
 						return done(null, user);
 					});
