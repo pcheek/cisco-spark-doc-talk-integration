@@ -6,9 +6,11 @@
   <p>We are sending notifications to your <strong>{{room.title}}</strong> Space. Change the Space where you would like notifications sent:</p>
   {{/unless}}
   <div class="list-group">
+    {{#if room}}
     <a href="#" class="list-group-item active disabled">
       {{room.title}}
     </a>
+    {{/if}}
     {{#each rooms}}
     <a href="/rooms/{{this.id}}" class="list-group-item list-group-item-action">{{this.title}}</a>
     {{/each}}
