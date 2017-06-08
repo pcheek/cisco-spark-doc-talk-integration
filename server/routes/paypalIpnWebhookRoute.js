@@ -71,7 +71,7 @@ module.exports = router.post('/:id', function(req, res) {
             	const ciscospark = require('ciscospark/env');
               ciscospark.messages.create({
                 text: notificationString,
-                roomId: user.cisco_spark_room_id
+                roomId: integration.cisco_spark_room_id
               }).then(function(message) {
                 console.log("message", message);
                 res.status(200);
