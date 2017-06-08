@@ -40,7 +40,7 @@ userSchema.methods.getRooms = function getRooms (callback) {
 	const ciscospark = require('ciscospark/env');
 	var thisIntegration = null;
 	var integrations = this.cisco_spark_integrations.filter(function(integration) {
-		if(cisco_spark_integration.cisco_spark_internal_integration_id == process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID) {
+		if(integration.cisco_spark_internal_integration_id == process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID) {
 			thisIntegration = integration;
 		}
 	})[0];
