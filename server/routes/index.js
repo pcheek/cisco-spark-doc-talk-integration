@@ -5,6 +5,8 @@
 
 const router = require('express').Router();
 
+const integrationsRoute = router.use('/integrations', require('./integrationsRoute'));
+
 const indexRoute = router.use('/', require('./indexRoute'));
 
 const loginRoute = router.use('/login', require('./loginRoute'));
@@ -14,10 +16,11 @@ const authSparkCallbackRoute = router.use('/auth/spark/callback', require('./aut
 
 const roomsRoute = router.use('/rooms', require('./roomsRoute'));
 
-const paypalIpnWebhookRoute = router.use('/paypal/ipn', require('./integrations/paypalIpnWebhookRoute'));
-const webhookWebhookRoute = router.use('/webhook/ipn', require('./integrations/webhookWebhookRoute'));
+const paypalIpnWebhookRoute = router.use('/api/inbound/paypal/ipn', require('./integrations/paypalIpnWebhookRoute'));
+const webhookWebhookRoute = router.use('/api/inbound/webhook/', require('./integrations/webhookWebhookRoute'));
 
 module.exports = {
+  integrationsRoute,
   indexRoute,
   loginRoute,
   logoutRoute,

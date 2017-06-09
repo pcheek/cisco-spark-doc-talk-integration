@@ -35,6 +35,9 @@ passport.use(new CiscoSparkStrategy({
       	cisco_spark_id: profile.id
       }).exec(function(err, user) {
       	if(err) return done(err, profile._json);
+        var defaultCiscoSparkIntegration = {
+          cisco_spark_internal_integration_id: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID
+        };
       	if(user) {
           var userUpdateQuery = {
 						cisco_spark_access_token: accessToken,
@@ -46,9 +49,7 @@ passport.use(new CiscoSparkStrategy({
           }).pop();
           if(!integration || integration == null) {
             userUpdateQuery['$push'] = {
-              "cisco_spark_integrations": {
-                cisco_spark_internal_integration_id: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID
-              }
+              "cisco_spark_integrations": defaultCiscoSparkIntegration
             }
           }
       		db.User.findOneAndUpdate({
@@ -63,6 +64,7 @@ passport.use(new CiscoSparkStrategy({
 					newUser.cisco_spark_id = profileJson.id;
 					newUser.cisco_spark_access_token = accessToken;
 					newUser.cisco_spark_refresh_token = refreshToken;
+          newUser.cisco_spark_integrations = defaultCiscoSparkIntegration;
 					newUser.emails = profileJson.emails;
 					newUser.avatar = profile.avatar;
 					newUser.display_name = profileJson.displayName;

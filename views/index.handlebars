@@ -35,7 +35,7 @@
   <li>Enter your unique URL (below) and hit "Save".</li>
 </ol>
 <p>Here is your unique PayPal IPN URL:</p>
-<input type="text" value="https://{{domain}}/paypal/ipn/{{user._id}}" class="form-control" disabled />
+<input type="text" value="https://{{domain}}/api/inbound/paypal/ipn/{{user._id}}" class="form-control" disabled />
 {{/if}}
 
 {{#if integration_is_webhook}}
@@ -45,9 +45,9 @@
 <pre style="padding: 15px; background: #333; color: #fff;"><code>curl -X POST \
      -H 'Content-Type: application/json' \
      -d '{"text":"Hello world!"}' \
-     https://{{domain}}/webhook/ipn/{{user._id}}</pre></code>
+     https://{{domain}}/api/inbound/webhook/{{user._id}}</pre></code>
 <p>Here is your unique webhook URL:</p>
-<input type="text" value="https://{{domain}}/webhook/ipn/{{user._id}}" class="form-control" disabled />
+<input type="text" value="https://{{domain}}/api/inbound/webhook/{{user._id}}" class="form-control" disabled />
 {{/if}}
 
 <br/>
