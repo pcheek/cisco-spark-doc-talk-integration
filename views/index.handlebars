@@ -29,10 +29,8 @@
   unique URL in your PayPal account. It's easy - follow these steps:</p>
 <ol>
   <li>Log into your PayPal account.</li>
-  <li>Go to Profile then "My Selling Tools".</li>
-  <li>Look for an option labelled "Instant Payment Notification". Click on the update button for that option.</li>
-  <li>Click "Choose IPN Settings".</li>
-  <li>Enter your unique URL (below) and hit "Save".</li>
+  <li>Follow the steps on <a href="http://www.paypal.com/ipn/" target="_blank">PayPal's website</a> to setup your IPN.</li>
+  <li>Setup your IPN to use your unique URL (below).</li>
 </ol>
 <p>Here is your unique PayPal IPN URL:</p>
 <input type="text" value="https://{{domain}}/api/inbound/paypal/ipn/{{user._id}}" class="form-control" disabled />
@@ -40,14 +38,28 @@
 
 {{#if integration_is_webhook}}
 <h3>Step 2: Setup Your Webhook Integration</h3>
-<p>To receive API alert notifications in Cisco Spark you will need to setup your
-  send requests to your unique URL. It's easy - send your request like this:</p>
+<p>To receive API alert notifications in Cisco Spark you will need to send
+  requests to your unique URL. It's easy - send your request like this:</p>
 <pre style="padding: 15px; background: #333; color: #fff;"><code>curl -X POST \
      -H 'Content-Type: application/json' \
      -d '{"text":"Hello world!"}' \
      https://{{domain}}/api/inbound/webhook/{{user._id}}</pre></code>
 <p>Here is your unique webhook URL:</p>
 <input type="text" value="https://{{domain}}/api/inbound/webhook/{{user._id}}" class="form-control" disabled />
+{{/if}}
+
+{{#if integration_is_simplifycommerce}}
+<h3>Step 2: Setup Your PayPal Integration</h3>
+<p>To receive webhook notifications in Cisco Spark you will need to setup your
+  unique URL in your Simplify account. It's easy - follow these steps:</p>
+<ol>
+  <li>Log into your Simplify Commerce account.</li>
+  <li>Click your name in the top right and choose "Web Hooks".</li>
+  <li>Enter your unique URL (below).</li>
+  <li>Choose whether you want to send Sandbox or Production webhooks and hit "Save".</li>
+</ol>
+<p>Here is your unique Simplify Commerce Webhook URL:</p>
+<input type="text" value="https://{{domain}}/api/inbound/simplifycommerce/{{user._id}}" class="form-control" disabled />
 {{/if}}
 
 <br/>
