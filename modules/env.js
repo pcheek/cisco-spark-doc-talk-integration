@@ -5,7 +5,7 @@
  */
 
  if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID)
-   process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID = 'paypal';
+   process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID = 'webhooks';
 if(!process.env.TZ)
   process.env.TZ = 'UTC';
 if(!process.env.MONGOLAB_URI)
@@ -43,6 +43,21 @@ if(process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID == 'webhook') {
     process.env.CISCOSPARK_CLIENT_ID = 'C7404715ab58cdd218fef812947be8f48f5957a9c0ec5e2b5b64389c83c43eee4';
   if(!process.env.CISCOSPARK_CLIENT_SECRET)
     process.env.CISCOSPARK_CLIENT_SECRET = '23814ea8bc3c92f7bbdb7889fc267ccfdc4caba08c7c975669c21bf0fdfd01b4';
+}
+
+if(process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID == 'simplifycommerce') {
+  if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_TITLE)
+    process.env.INTERNAL_CISCO_SPARK_INTEGRATION_TITLE = 'Simplify Commerce by MasterCard';
+  if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_DESCRIPTION)
+    process.env.INTERNAL_CISCO_SPARK_INTEGRATION_DESCRIPTION = 'The Cisco Spark Simplify Commerce by MasterCard Integration provides instant payment notifications for Simplify Commerce by MasterCard payments within Cisco Spark.';
+  if(!process.env.INTERNAL_CISCO_SPARK_INTEGRATION_LOGIN_TEXT)
+    process.env.INTERNAL_CISCO_SPARK_INTEGRATION_LOGIN_TEXT = 'When you setup the Cisco Spark Simplify Commerce by MasterCard Integration you will receive instant payment notifications for activity in your Simplify Commerce by MasterCard account directly within Cisco Spark. Setup is simple and we are here to help you if you need assistance or have questions.';
+  if(!process.env.DOMAIN)
+    process.env.DOMAIN = 'cisco-spark-paypal-integration.ngrok.io';
+  if(!process.env.CISCOSPARK_CLIENT_ID)
+    process.env.CISCOSPARK_CLIENT_ID = 'Cef12b2e90794410a78c6babbc56135bd834661fabcc60cf4104bc15c35fedb4c';
+  if(!process.env.CISCOSPARK_CLIENT_SECRET)
+    process.env.CISCOSPARK_CLIENT_SECRET = 'a69e69320cab3a0b90c6271b21c4265c072d8b7dc843948da2a9c7c9b6695cab';
 }
 
 if(!process.env.CISCOSPARK_REDIRECT_URI)
