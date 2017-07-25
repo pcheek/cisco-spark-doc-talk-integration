@@ -13,7 +13,7 @@ To try Doc Talk - follow these steps:
 Login to Doc Talk:
 https://cisco-spark-doc-talk.herokuapp.com
 
-Choose a healthcare professional who you would like to spaek with.
+Choose a healthcare professional who you would like to speak with.
 
 The virtual consultation will begin momentarily.
 
