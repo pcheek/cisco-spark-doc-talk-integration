@@ -11,14 +11,14 @@ Doc Talk charges patients $5/minute and pays health professionals $4/minute. Com
 To try Doc Talk - follow these steps:
 
 Login to Doc Talk:
-https://cisco-spark-doc-talk-integration.herokuapp.com
+https://cisco-spark-doc-talk.herokuapp.com
 
 Choose a healthcare professional who you would like to spaek with.
 
 The virtual consultation will begin momentarily.
 
 In the demo, the Doctors are not real so you can modify the URL to use another person's Cisco Spark account like so:
-`https://cisco-spark-doc-talk-integration.herokuapp.com/?email=EMAIL_ADDRESS_HERE`
+`https://cisco-spark-doc-talk.herokuapp.com/?email=EMAIL_ADDRESS_HERE`
 
 ### Getting Started
 
@@ -26,16 +26,16 @@ There are a few steps to get started on working with the Cisco Spark Doc Talk In
 
 #### Installing Cisco Spark Doc Talk Integration
 
-[Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/pcheek/cisco-spark-doc-talk-integration/master)
+[Deploy to Heroku](https://heroku.com/deploy?template=https://github.com/pcheek/cisco-spark-doc-talk/master)
 
 Clone this repository:
 
-`git clone https://github.com/pcheek/cisco-spark-doc-talk-integration.git`
+`git clone https://github.com/pcheek/cisco-spark-doc-talk.git`
 
 Install dependencies:
 
 ```
-cd cisco-spark-doc-talk-integration
+cd cisco-spark-doc-talk
 npm install
 ```
 
