@@ -1,71 +1,35 @@
-<h3>Step 1: Choose Your Space</h3>
-{{#if rooms}}
-  {{#unless room}}
-  <p>Please choose the Space where you would like notifications sent:</p>
-  {{else}}
-  <p>We are sending notifications to your <strong>{{room.title}}</strong> Space. Change the Space where you would like notifications sent:</p>
-  {{/unless}}
-  <div class="list-group">
-    {{#if room}}
-    <a href="#" class="list-group-item active disabled">
-      {{room.title}}
-    </a>
-    {{/if}}
-    {{#each rooms}}
-    <a href="/rooms/{{this.id}}" class="list-group-item list-group-item-action">{{this.title}}</a>
-    {{/each}}
+<div class="text-center">
+  {{#if call_email}}
+  <div class="page-call">
+    <h2>Call {{#if call_name}}{{call_name}}{{else}}{{call_email}}{{/if}}</h2>
+    <p>You are chatting with {{#if call_name}}{{call_name}}{{else}}{{call_email}}{{/if}}...</p>
+    <br/><br/><div style="width: 100%; height: 400px;" class="call-container">
+      <main
+        class="ciscospark-space"
+        data-toggle="ciscospark-space"
+        data-access-token="{{cisco_spark_access_token}}"
+        data-to-person-email="{{call_email}}"
+      />
+    </div>
   </div>
-{{else}}
-  No Spaces.
-{{/if}}
-
-<br/>
-<hr/>
-<br/>
-
-{{#if integration_is_paypal}}
-<h3>Step 2: Setup Your PayPal Integration</h3>
-<p>To receive payment notifications in Cisco Spark you will need to setup your
-  unique URL in your PayPal account. It's easy - follow these steps:</p>
-<ol>
-  <li>Log into your PayPal account.</li>
-  <li>Follow the steps on <a href="http://www.paypal.com/ipn/" target="_blank">PayPal's website</a> to setup your IPN.</li>
-  <li>Setup your IPN to use your unique URL (below).</li>
-</ol>
-<p>Here is your unique PayPal IPN URL:</p>
-<input type="text" value="https://{{domain}}/api/inbound/paypal/ipn/{{user._id}}" class="form-control" disabled />
-{{/if}}
-
-{{#if integration_is_webhook}}
-<h3>Step 2: Setup Your Webhook Integration</h3>
-<p>To receive API alert notifications in Cisco Spark you will need to send
-  requests to your unique URL. It's easy - send your request like this:</p>
-<pre style="padding: 15px; background: #333; color: #fff;"><code>curl -X POST \
-     -H 'Content-Type: application/json' \
-     -d '{"text":"Hello world!"}' \
-     https://{{domain}}/api/inbound/webhook/{{user._id}}</pre></code>
-<p>Here is your unique webhook URL:</p>
-<input type="text" value="https://{{domain}}/api/inbound/webhook/{{user._id}}" class="form-control" disabled />
-{{/if}}
-
-{{#if integration_is_simplifycommerce}}
-<h3>Step 2: Setup Your PayPal Integration</h3>
-<p>To receive webhook notifications in Cisco Spark you will need to setup your
-  unique URL in your Simplify account. It's easy - follow these steps:</p>
-<ol>
-  <li>Log into your Simplify Commerce account.</li>
-  <li>Click your name in the top right and choose "Web Hooks".</li>
-  <li>Enter your unique URL (below).</li>
-  <li>Choose whether you want to send Sandbox or Production webhooks and hit "Save".</li>
-</ol>
-<p>Here is your unique Simplify Commerce Webhook URL:</p>
-<input type="text" value="https://{{domain}}/api/inbound/simplifycommerce/{{user._id}}" class="form-control" disabled />
-{{/if}}
-
-<br/>
-<hr/>
-<br/>
-
-<h3>Step 3: Help</h3>
-<p>Need help getting started? We are here to answer any questions you might
-  have. Please email ciscospark@worldrenowned.co.
+  {{else}}
+  <div class="page-pick">
+    <h2>Call Our Health Professionals</h2>
+    <p>Choose a health professional to begin your virtual consultation.</p>
+    <br/><br/>
+    <div class="row doc-container">
+      <div class="col-sm-3 doc doc-template" style="display: none;">
+        <a href="#" class="doc-link" data-email="" data-name="">
+          <h5 style="text-align: center;">Name</h5>
+        </a>
+      </div>
+    </div>
+  </div>
+  {{/if}}
+  <br/><br/>
+  <p class="text-center" style="font-size: 10px; text-align: center;">
+    Doc Talk does not support any type of emergency calling.
+    <br/>
+    In the event of an emergency please call your local emergency telephone number.
+  </p>
+</div>

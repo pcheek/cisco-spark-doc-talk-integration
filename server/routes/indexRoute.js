@@ -12,6 +12,10 @@ module.exports = router.get('/', function(req, res) {
   if(!req.user) return res.redirect('/login');
   var message = null;
   if(req.query.message) message = req.query.message;
+  var email = null;
+  var name = null;
+  if(req.query.email) email = req.query.email;
+  if(req.query.name) name = req.query.name;
   db.User.findOne({
     _id: req.user._id
   }).exec(function(err, user) {
@@ -30,8 +34,12 @@ module.exports = router.get('/', function(req, res) {
         room: room,
         rooms: rooms,
         message: message,
+        call_email: email,
+        call_name: name,
+        cisco_spark_access_token: user.cisco_spark_access_token,
         integration_is_paypal: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID === 'paypal',
-        integration_is_webhook: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID === 'webhook'
+        integration_is_webhook: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID === 'webhook',
+        integration_is_simplifycommerce: process.env.INTERNAL_CISCO_SPARK_INTEGRATION_ID === 'simplifycommerce'
       });
     });
   });
