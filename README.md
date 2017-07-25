@@ -20,6 +20,9 @@ The virtual consultation will begin momentarily.
 In the demo, the Doctors are not real so you can modify the URL to use another person's Cisco Spark account like so:
 `https://cisco-spark-doc-talk.herokuapp.com/?email=EMAIL_ADDRESS_HERE`
 
+Or you can try to chat with me:
+[https://cisco-spark-doc-talk.herokuapp.com/?email=paul@worldrenowned.co](https://cisco-spark-doc-talk.herokuapp.com/?email=paul@worldrenowned.co)
+
 ### Getting Started
 
 There are a few steps to get started on working with the Cisco Spark Doc Talk Integration:
